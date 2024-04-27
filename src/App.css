@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.sidebar {
+  background-color: peru;
+  display: grid;
+  grid-template:.5fr / 1fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 1.65em;
+  font-size: large;
+}
+
+.formContainer {
+  margin: 20em 25em;
+}
+
+.formHead {
+  /* padding-left: 30em; */
+}
+
+.containers {
+  cursor: wait;
+}
+
+.imagecontainer {
+  display: flex;
+ 
+}
+
+.imagec {
+  min-width: 35vw;
+  min-height: 55vh;
+  border-radius: 5px;
+
+  padding-left: 2px; 
+  padding-right: 2px;
+}

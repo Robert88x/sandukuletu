@@ -15,6 +15,12 @@ import three from './includes/images/pexels-matt-hatchett-982360-2599270.jpg';
 
 import { db } from "./firebase-config";
 import { doc, setDoc } from "@firebase/firestore";
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+
+//action imports
+import userLoginAction from './actions/userLoginAction';
+
 
 export class App extends Component {
    async componentDidMount(){
@@ -33,14 +39,14 @@ export class App extends Component {
       //set up and insert/add in this document
       //if userId is the same its going to update the fields
 
-      let userID = ("IYT" + Math.floor(Math.random() * 10000) + "XUY").toString();
-      const newData = { name: "Manpacayoo", job: "Software Tech", country: "Tanzania", role: "User", status: true }
+      // let userID = ("IYT" + Math.floor(Math.random() * 10000) + "XUY").toString();
+      // const newData = { name: "Manpacayoo", job: "Software Tech", country: "Tanzania", role: "User", status: true }
     
-      await setDoc(doc(db, "users", userID), newData).then(docRef => {
-          console.log("Document has been added successfullyv");
-      }).catch(e => {
-          console.log(e);
-      });
+      // await setDoc(doc(db, "users", userID), newData).then(docRef => {
+      //     console.log("Document has been added successfullyv");
+      // }).catch(e => {
+      //     console.log(e);
+      // });
 
 }
 
@@ -56,7 +62,7 @@ export class App extends Component {
 
     this.state = {
         username: this.props.username,
-        existed: true,
+        existed: false,
     }
 }
 
@@ -137,9 +143,23 @@ export class App extends Component {
   }
   }
 
-App.propTypes = {};
+// App.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   username: PropTypes.string.isRequired,
+//   job: PropTypes.string.isRequired,
+//   password: PropTypes.password.isRequired
+// };
 
-  
+const mapStateToProps = (state) => {
+  const { name, username, job, password } = state.users;
 
-export default withNavigateHook(App);
+  return {
+    name,
+    username,
+    job,
+    password
+  }
+} 
+
+export default withNavigateHook(connect(mapStateToProps, { userLoginAction })(App));
 

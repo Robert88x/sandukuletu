@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import reducer from './reducers/redux';
 
 //components
 import App from './App';
@@ -17,6 +20,7 @@ import Chats from "./components/welcomepages/Chats";
 import Errorpage from './components/Errorpage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const store = configureStore({ reducer });
 
 const router = createBrowserRouter([
   {
@@ -74,9 +78,12 @@ if(router.path !== "/" || "/login" || "/register" || "/signout" || "/about" || "
 }
 
 root.render(
+    <Provider store={store}>
       <React.Fragment>
         <RouterProvider router={router} />
       </React.Fragment>
+    </Provider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

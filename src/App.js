@@ -34,7 +34,7 @@ export class App extends Component {
       //if userId is the same its going to update the fields
 
       let userID = ("IYT" + Math.floor(Math.random() * 10000) + "XUY").toString();
-      const newData = { name: "Rodrigo", job: "Enterprenuer", country: "Tanzania", role: "User", status: true }
+      const newData = { name: "Manpacayoo", job: "Software Tech", country: "Tanzania", role: "User", status: true }
     
       await setDoc(doc(db, "users", userID), newData).then(docRef => {
           console.log("Document has been added successfullyv");

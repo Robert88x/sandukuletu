@@ -38,7 +38,6 @@ export class App extends Component {
 
       //set up and insert/add in this document
       //if userId is the same its going to update the fields
-
       // let userID = ("IYT" + Math.floor(Math.random() * 10000) + "XUY").toString();
       // const newData = { name: "Manpacayoo", job: "Software Tech", country: "Tanzania", role: "User", status: true }
     
@@ -109,23 +108,23 @@ export class App extends Component {
               making sure to replace 16.x with your preferred version string if different.
               Deserunt aute magna do incididunt irure in nulla non incididunt. Ex est minim laborum dolor cillum 
               proident ut adipisicing. Minim incididunt eu veniam consequat aliquip mollit deserunt ullamco enim ipsum 
-              fugiat cupidatat voluptate.
+              fugiat cupidatat voluptate.Minim incididunt eu veniam consequat aliquip mollit deserunt 
               These PPAs have more versions of Node.js available than the official Ubuntu repositories. 
-              Node.js v16 and v18 are available as of the time of writing.
+              Node.js v16 and v18 are available as of the time of writing official Ubuntu repositories.
               First, install the PPA to get access to its packages. From your home directory, 
               use curl to retrieve the installation script for your preferred version, 
               making sure to replace 16.x with your preferred version string if different.
               Deserunt aute magna do incididunt irure in nulla non incididunt. Ex est minim laborum dolor cillum 
               proident ut adipisicing. Minim incididunt eu veniam consequat aliquip mollit deserunt ullamco enim ipsum 
-              fugiat cupidatat voluptate.
+              fugiat cupidatat voluptate.Minim incididunt eu veniam consequat aliquip mollit deserunt 
               These PPAs have more versions of Node.js available than the official Ubuntu repositories. 
-              Node.js v16 and v18 are available as of the time of writing.
+              Node.js v16 and v18 are available as of the time of writing official Ubuntu repositories.
               First, install the PPA to get access to its packages. From your home directory, 
               use curl to retrieve the installation script for your preferred version, 
               making sure to replace 16.x with your preferred version string if different.
               Deserunt aute magna do incididunt irure in nulla non incididunt. Ex est minim laborum dolor cillum 
               proident ut adipisicing. Minim incididunt eu veniam consequat aliquip mollit deserunt ullamco enim ipsum 
-              fugiat cupidatat voluptate.
+              fugiat cupidatat voluptate.Minim incididunt eu veniam consequat aliquip mollit deserunt 
           </p>
           <div className='imagecontainer'>
             <img className='imagec' src={one} alt='one' />
@@ -143,12 +142,12 @@ export class App extends Component {
   }
   }
 
-// App.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   username: PropTypes.string.isRequired,
-//   job: PropTypes.string.isRequired,
-//   password: PropTypes.password.isRequired
-// };
+App.propTypes = {
+  name: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  job: PropTypes.string.isRequired,
+  password: PropTypes.password.isRequired
+};
 
 const mapStateToProps = (state) => {
   const { name, username, job, password } = state.users;

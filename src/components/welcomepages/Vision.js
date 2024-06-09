@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class Vision extends Component {
+class Vision extends Component {
   render() {
     return (
       <div>Vision</div>

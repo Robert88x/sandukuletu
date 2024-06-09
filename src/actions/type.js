@@ -3,6 +3,11 @@ export const USER_LOGGED_IN = 'user_logged_in';
 export const USER_LOGGED_IN_SUCCESSFULLY = 'user_logged_in_successfully';
 export const USER_LOGGED_IN_FAILED = 'user_logged_in_failed';
 
+//fetch user profile
+export const FETCH_PROFILE = "fetch_profile";
+export const FETCH_PROFILE_SUCCESSFULLY= "fetch_profile_successfully";
+export const FETCH_PROFILE_FAILED = "fetch_profile_failed";
+
 //when user in home
 export const USER_HOME = 'user_home';
 export const USER_HOME_SUCCESSFULLY = 'user_home_successfully';

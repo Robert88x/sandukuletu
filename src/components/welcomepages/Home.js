@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class Home extends Component {
+class Home extends Component {
     //above render function
     constructor(props){
         super(props);

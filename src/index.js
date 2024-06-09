@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import reducer from './reducers/redux';
 
+
 //components
 import App from './App';
 import Register from './components/credentialspages/Register';
@@ -16,11 +17,15 @@ import Home from './components/welcomepages/Home';
 import About from "./components/welcomepages/About";
 import Vision from "./components/welcomepages/Vision";
 import Chats from "./components/welcomepages/Chats";
+import Profile from './components/credentialspages/Profile';
+
 
 import Errorpage from './components/Errorpage';
+import Composechat from './components/welcomepages/Composechat';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = configureStore({ reducer });
+
 
 const router = createBrowserRouter([
   {
@@ -69,6 +74,21 @@ const router = createBrowserRouter([
     element: <Vision />,
     errorElement: <Errorpage />
 
+  },
+  {
+    path: "/chats",
+    element: <Chats />,
+    errorElement: <Errorpage />
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+    errorElement: <Errorpage />
+  },
+  {
+    path: "/composend",
+    element: <Composechat />,
+    errorElement: <Errorpage />
   },
 ]);
 

@@ -1,21 +1,60 @@
 import React, { Component } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import _ from 'lodash';
 
-export class Login extends Component {
+
+import withNavigateHook from '../../components/withNavigateHook';
+//action imports
+import {saveUser, fetchDataFromFirestore }from '../../actions/userLoginAction';
+
+class Login extends Component {
+  componentDidMount() {
+    this.props.fetchDataFromFirestore();
+  }
+
     //above render function
     constructor(props){
         super(props);
+        // this.fetchDataFromFirestore = this.fetchDataFromFirestore.bind(this);
 
         this.state = {
             username: this.props.username,
+            password: this.props.password,
+            profiles: this.props.profiles,
+
             // existed: false,
         }
+    }
+
+    renderProfile(){
+      const { profiles } = this.props;
+      
+          Object.keys(profiles).map((item, i) => (
+              <li className="travelcompany-input" key={i}>
+                  <span className="input-label">{ profiles[item].name }</span>
+              </li>
+          ))
+      
+  
+      if (!_.isEmpty(profiles)) {
+        return profiles;
+      }
+      return (
+        <div className="col s10 offset-s1 center-align">
+          <h4>You have no profile yet!</h4>
+          <p>Please create profile</p>
+        </div>
+      );
+  
     }
 
     
 
   render() {
     // const isLoggedIn = this.state.existed;
+    const { username, password } = this.state.profiles;
 
     //function operate inside the render function
     const onFinish = (values) => {
@@ -57,7 +96,9 @@ export class Login extends Component {
                             },
                         ]}
                         >
-                        <Input />
+                        <Input 
+                          onChange={(e) => this.props.userLoginAction({"username": username })}
+                          />
                 </Form.Item>
 
                 <Form.Item
@@ -70,7 +111,10 @@ export class Login extends Component {
                             },
                         ]}
                         >
-                        <Input.Password />
+                        <Input 
+                          type='password'
+                          onChange={(e) => this.props.userLoginAction({"password": password })}
+                          />
                         </Form.Item>
 
                         <Form.Item
@@ -95,9 +139,33 @@ export class Login extends Component {
                         </Button>
                     </Form.Item>
         </Form >
+
+        <div>
+          display username, password, name etc from redux stored from the firestore
+          {this.renderProfile()}
+        </div>
         </div>
     )
   }
 }
 
-export default Login
+Login.propTypes = {
+    name: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    job: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired
+  };
+  
+  const mapStateToProps = (state) => {
+    const { name, username, job, password, profiles } = state.users;
+  
+    return {
+      name,
+      username,
+      job,
+      password,
+      profiles
+    }
+  } 
+
+export default withNavigateHook(connect(mapStateToProps, { saveUser, fetchDataFromFirestore })(Login));

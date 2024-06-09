@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
 
-export class Register extends Component {
+class Register extends Component {
     //above render function
     constructor(props){
         super(props);

@@ -13,8 +13,8 @@ import one from './includes/images/christina-wocintechchat-com-glRqyWJgUeY-unspl
 import two from './includes/images/pexels-fauxels-3183132.jpg';
 import three from './includes/images/pexels-matt-hatchett-982360-2599270.jpg';
 
-import { db } from "./firebase-config";
-import { doc, setDoc } from "@firebase/firestore";
+// import { db } from "./firebase-config";
+// import { doc, setDoc } from "firebase/firestore";
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
@@ -30,7 +30,7 @@ export class App extends Component {
     //   const data = await getDocs(usersCollectionRef);
     //   console.log(data);
       
-      // setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+         // setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     // };
 
     // getUsers();
@@ -46,24 +46,26 @@ export class App extends Component {
       // }).catch(e => {
       //     console.log(e);
       // });
-
 }
 
   
      //above render function
     constructor(props){
-    super(props);
-    //bind here
-    this.onAbout = this.onAbout.bind(this);
-    this.onRegister = this.onRegister.bind(this);
-    this.onLogin = this.onLogin.bind(this);
+        super(props);
+        //bind here
+        this.onAbout = this.onAbout.bind(this);
+        this.onRegister = this.onRegister.bind(this);
+        this.onLogin = this.onLogin.bind(this);
+        this.onChats = this.onChats.bind(this);
 
-
-    this.state = {
-        username: this.props.username,
-        existed: false,
-    }
+        this.state = {
+            username: this.props.username,
+            value: this.props.value,
+            existed: true,
+        }
 }
+
+  // componentWillReceiveProps({})
 
   //methods about render
   onAbout() {
@@ -78,8 +80,13 @@ export class App extends Component {
     this.props.navigation('/register');
   }
 
+  onChats() {
+    this.props.navigation('/chats')
+  }
+
   render() {
     const isLoggedIn = this.state.existed;
+    const value = this.state.users;
 
     return (
       <div className="app">
@@ -87,8 +94,10 @@ export class App extends Component {
           <div><Home /></div>
           <div className='containers' onClick={this.onAbout}>About</div>
           <div>Vision</div>
-          <div>Chats</div>
-          <div>Notifications</div>
+          <div className='containers' onClick={this.onChats}>Chats</div>
+          <div>Notifications
+            <button>value: {value}</button>
+          </div>
           <div>
             {/* <Login username="robert"/> */}
             { isLoggedIn ? <div className='containers' onClick={this.onLogin}>Login</div> : 
@@ -99,32 +108,32 @@ export class App extends Component {
         <div className='contentWelcome'>
           <h1>Sanduku la Maoni Kitaa</h1>
           <p>
-              To install a different version of Node.js, 
-              you can use a PPA (personal package archive) maintained by NodeSource. 
-              These PPAs have more versions of Node.js available than the official Ubuntu repositories. 
-              Node.js v16 and v18 are available as of the time of writing.
-              First, install the PPA to get access to its packages. From your home directory, 
-              use curl to retrieve the installation script for your preferred version, 
-              making sure to replace 16.x with your preferred version string if different.
-              Deserunt aute magna do incididunt irure in nulla non incididunt. Ex est minim laborum dolor cillum 
-              proident ut adipisicing. Minim incididunt eu veniam consequat aliquip mollit deserunt ullamco enim ipsum 
-              fugiat cupidatat voluptate.Minim incididunt eu veniam consequat aliquip mollit deserunt 
-              These PPAs have more versions of Node.js available than the official Ubuntu repositories. 
-              Node.js v16 and v18 are available as of the time of writing official Ubuntu repositories.
-              First, install the PPA to get access to its packages. From your home directory, 
-              use curl to retrieve the installation script for your preferred version, 
-              making sure to replace 16.x with your preferred version string if different.
-              Deserunt aute magna do incididunt irure in nulla non incididunt. Ex est minim laborum dolor cillum 
-              proident ut adipisicing. Minim incididunt eu veniam consequat aliquip mollit deserunt ullamco enim ipsum 
-              fugiat cupidatat voluptate.Minim incididunt eu veniam consequat aliquip mollit deserunt 
-              These PPAs have more versions of Node.js available than the official Ubuntu repositories. 
-              Node.js v16 and v18 are available as of the time of writing official Ubuntu repositories.
-              First, install the PPA to get access to its packages. From your home directory, 
-              use curl to retrieve the installation script for your preferred version, 
-              making sure to replace 16.x with your preferred version string if different.
-              Deserunt aute magna do incididunt irure in nulla non incididunt. Ex est minim laborum dolor cillum 
-              proident ut adipisicing. Minim incididunt eu veniam consequat aliquip mollit deserunt ullamco enim ipsum 
-              fugiat cupidatat voluptate.Minim incididunt eu veniam consequat aliquip mollit deserunt 
+            To install a different version of Node.js, 
+            you can use a PPA (personal package archive) maintained by NodeSource. 
+            These PPAs have more versions of Node.js available than the official Ubuntu repositories. 
+            Node.js v16 and v18 are available as of the time of writing.
+            First, install the PPA to get access to its packages. From your home directory, 
+            use curl to retrieve the installation script for your preferred version, 
+            making sure to replace 16.x with your preferred version string if different.
+            Deserunt aute magna do incididunt irure in nulla non incididunt. Ex est minim laborum dolor cillum 
+            proident ut adipisicing. Minim incididunt eu veniam consequat aliquip mollit deserunt ullamco enim ipsum 
+            fugiat cupidatat voluptate.Minim incididunt eu veniam consequat aliquip mollit deserunt 
+            These PPAs have more versions of Node.js available than the official Ubuntu repositories. 
+            Node.js v16 and v18 are available as of the time of writing official Ubuntu repositories.
+            First, install the PPA to get access to its packages. From your home directory, 
+            use curl to retrieve the installation script for your preferred version, 
+            making sure to replace 16.x with your preferred version string if different.
+            Deserunt aute magna do incididunt irure in nulla non incididunt. Ex est minim laborum dolor cillum 
+            proident ut adipisicing. Minim incididunt eu veniam consequat aliquip mollit deserunt ullamco enim ipsum 
+            fugiat cupidatat voluptate.Minim incididunt eu veniam consequat aliquip mollit deserunt 
+            These PPAs have more versions of Node.js available than the official Ubuntu repositories. 
+            Node.js v16 and v18 are available as of the time of writing official Ubuntu repositories.
+            First, install the PPA to get access to its packages. From your home directory, 
+            use curl to retrieve the installation script for your preferred version, 
+            making sure to replace 16.x with your preferred version string if different.
+            Deserunt aute magna do incididunt irure in nulla non incididunt. Ex est minim laborum dolor cillum 
+            proident ut adipisicing. Minim incididunt eu veniam consequat aliquip mollit deserunt ullamco enim ipsum 
+            fugiat cupidatat voluptate.Minim incididunt eu veniam consequat aliquip mollit deserunt 
           </p>
           <div className='imagecontainer'>
             <img className='imagec' src={one} alt='one' />
@@ -133,11 +142,7 @@ export class App extends Component {
           </div>
           
         </div>
-      </div>
-
-
-  
-      
+      </div>    
     );
   }
   }
@@ -146,13 +151,14 @@ App.propTypes = {
   name: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   job: PropTypes.string.isRequired,
-  password: PropTypes.password.isRequired
+  password: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => {
-  const { name, username, job, password } = state.users;
+  const { name, username, job, password, value } = state.users;
 
   return {
+    value,
     name,
     username,
     job,
